@@ -25,12 +25,13 @@ $results = try {
         'removeUser'         = [boolean]$Request.Body.removeUser
         'addUser'            = [boolean]$Request.Body.addUser
         'addChocoApp'        = [boolean]$Request.Body.addChocoApp
+        'onePerTenant'       = [boolean]$Request.Body.onePerTenant
         'PartitionKey'       = 'CippNotifications'
         'RowKey'             = 'CippNotifications'
     }
 
     Add-AzDataTableEntity @Table -Entity $SchedulerConfig -Force | Out-Null
-    'Succesfully set the configuration'
+    'Successfully set the configuration'
 }
 catch {
     "Failed to set configuration: $($_.Exception.message)"
